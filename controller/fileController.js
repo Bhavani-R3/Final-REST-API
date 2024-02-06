@@ -128,7 +128,7 @@ const deleteFile = async (req,res) => {
             // to delete the file
             await fs.unlinkSync(filePath)
             // to remove file info in db collection
-            await FileSchema.fileByIdAndDelete({ _id: extFile._id })
+            await FileSchema.findByIdAndDelete({ _id: extFile._id })
 
             return res.status(StatusCodes.ACCEPTED).json({ msg: 'file deleted successfully', success: true })
         } else {
